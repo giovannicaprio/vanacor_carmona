@@ -6,8 +6,22 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             const section = document.querySelector(this.getAttribute('href'));
             section.scrollIntoView({ behavior: 'smooth' });
+            // Fechar menu mobile ao clicar
+            const navMenu = document.getElementById('nav-menu');
+            if (window.innerWidth <= 700 && navMenu.classList.contains('open')) {
+                navMenu.classList.remove('open');
+            }
         });
     });
+
+    // Hamburger menu functionality
+    const hamburger = document.getElementById('hamburger-menu');
+    const navMenu = document.getElementById('nav-menu');
+    if (hamburger && navMenu) {
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('open');
+        });
+    }
 
     // Contact form handling
     const contactForm = document.getElementById('contactForm');

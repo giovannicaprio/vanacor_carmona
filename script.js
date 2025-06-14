@@ -30,16 +30,25 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             
             // Get form data
-            const formData = new FormData(this);
-            const data = Object.fromEntries(formData);
+            const nome = this.querySelector('input[type="text"]').value.trim();
+            const email = this.querySelector('input[type="email"]').value.trim();
+            const mensagem = this.querySelector('textarea').value.trim();
             
-            // Here you would typically send the data to your server
-            console.log('Form submitted:', data);
+            // Validar apenas nome e mensagem
+            if (!nome || !mensagem) {
+                alert('Por favor, preencha seu nome e a mensagem.');
+                return;
+            }
             
-            // Show success message
-            alert('Mensagem enviada com sucesso! Entraremos em contato em breve.');
+            // Montar mensagem para o WhatsApp
+            const texto = `Nome: ${nome}%0AEmail: ${email}%0AMensagem: ${mensagem}`;
+            const numero = '5551989081823';
+            const url = `https://wa.me/${numero}?text=${texto}`;
             
-            // Reset form
+            // Redirecionar para o WhatsApp Web
+            window.open(url, '_blank');
+            
+            // Opcional: resetar o formulário
             this.reset();
         });
     }

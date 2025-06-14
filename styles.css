@@ -250,6 +250,12 @@ header {
     background-color: var(--gray-dark);
 }
 
+.contact-form button i.fab.fa-whatsapp {
+    font-size: 1.4em;
+    margin-right: 0.6em;
+    vertical-align: middle;
+}
+
 .social-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
